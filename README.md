@@ -30,4 +30,4 @@
 - **Copy Token from the response (data.token) ex: "1|ec6SeOEog8omnjSsaWWEA9JsFQIkQB80e4UBKkYDf68187eb"**
 - **Paste to env Tab -> variable: bearerToken**
   - **Ex: "Bearer 1|ec6SeOEog8omnjSsaWWEA9JsFQIkQB80e4UBKkYDf68187eb"**
-- **After Login, You Can Get token API**
+- **After Have Bearer Token, You Can Access All APIs**
