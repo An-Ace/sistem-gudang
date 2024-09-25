@@ -1,5 +1,11 @@
 # SISTEM GUDANG
 ## Test From ID-GROW
+### Description
+**This application is a test of ID-GROW, using the table models users, items, mutations.**
+#### Relational Database Models
+- **User -> Mutations (Has Many)**
+- **Item -> Mutations (Has Many)**
+- **Mutations -> User, Item (Belongs To)**
 ### Use Stack
 - **Laravel 11 as Backend Framework API**
 - **Vue JS as Frontend Framework**
