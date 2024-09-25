@@ -1,0 +1,91 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sistem-gudang-app
+    volumes:
+      - .:/var/www
+    environment:
+      - APP_NAME=Laravel
+      - APP_ENV=local
+      - APP_KEY=base64:926r7b2T/sU+hWaT1p5GYr1BywZeFAlrX0W0dPDWf7Q=
+      - APP_DEBUG=true
+      - APP_TIMEZONE=UTC
+      - APP_URL=http://localhost
+      - APP_LOCALE=en
+      - APP_FALLBACK_LOCALE=en
+      - APP_FAKER_LOCALE=en_US
+      - APP_MAINTENANCE_DRIVER=file
+      - BCRYPT_ROUNDS=6
+      - LOG_CHANNEL=stack
+      - LOG_STACK=single
+      - LOG_DEPRECATIONS_CHANNEL=null
+      - LOG_LEVEL=debug
+      - DB_CONNECTION=pgsql
+      - DB_HOST=127.0.0.1
+      - DB_PORT=5432
+      - DB_DATABASE=sistem-gudang
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=postgres
+      - SESSION_DRIVER=file
+      - SESSION_LIFETIME=120
+      - SESSION_ENCRYPT=false
+      - SESSION_PATH=/
+      - SESSION_DOMAIN=null
+      - BROADCAST_CONNECTION=log
+      - FILESYSTEM_DISK=local
+      - QUEUE_CONNECTION=database
+      - CACHE_STORE=database
+      - CACHE_PREFIX=
+      - MEMCACHED_HOST=127.0.0.1
+      - REDIS_CLIENT=phpredis
+      - REDIS_HOST=127.0.0.1
+      - REDIS_PASSWORD=null
+      - REDIS_PORT=6379
+      - MAIL_MAILER=log
+      - MAIL_HOST=127.0.0.1
+      - MAIL_PORT=2525
+      - MAIL_USERNAME=null
+      - MAIL_PASSWORD=null
+      - MAIL_ENCRYPTION=null
+      - MAIL_FROM_ADDRESS="hello@example.com"
+      - MAIL_FROM_NAME="${APP_NAME}"
+      - AWS_ACCESS_KEY_ID=
+      - AWS_SECRET_ACCESS_KEY=
+      - AWS_DEFAULT_REGION=us-east-1
+      - AWS_BUCKET=
+      - AWS_USE_PATH_STYLE_ENDPOINT=false
+      - VITE_APP_NAME="${APP_NAME}"
+    ports:
+      - "8000:80"
+    networks:
+      - laravel_network
+  db:
+    image: postgres:alpine
+    container_name: sistem-gudang-db
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: 'sistem-gudang'
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'postgres'
+    ports:
+      - '5432:5432'
+    networks:
+    - laravel_network
+  vite:
+    image: node:20-alpine
+    container_name: vite_dev
+    volumes:
+      - .:/var/www
+    working_dir: /var/www
+    command: npm run dev
+    ports:
+      - "5173:5173"
+    networks:
+      - laravel_network
+volumes:
+  db-data:
+networks:
+  laravel_network:
