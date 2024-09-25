@@ -20,7 +20,7 @@
 
 ## Backend Tests
 - ~~Open Postman ['Click Here'](https://www.postman.com/satellite-specialist-33117715/workspace/test-muhammad-nasrulloh/collection/30824227-9ba35438-add0-4211-ad95-e8c7a81192bc?action=share&creator=30824227)~~ ***(Issue: can’t send requests to the Localhost)**
-- **Open Here:** [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://god.gw.postman.com/run-collection/30824227-9ba35438-add0-4211-ad95-e8c7a81192bc?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D30824227-9ba35438-add0-4211-ad95-e8c7a81192bc%26entityType%3Dcollection%26workspaceId%3D4a395420-f9e6-402f-8703-810890b1988d) **And Choose <u>import a copy</u>**
+- **Open Here:** [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://god.gw.postman.com/run-collection/30824227-9ba35438-add0-4211-ad95-e8c7a81192bc?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D30824227-9ba35438-add0-4211-ad95-e8c7a81192bc%26entityType%3Dcollection%26workspaceId%3D4a395420-f9e6-402f-8703-810890b1988d) **And Choose <ins>import a copy</ins>**
 - **SignUp Account on Auth Tab**
 - **For Example:**
   - **Name:** `Example`
