@@ -1,40 +1,44 @@
-# Pilih image PHP dengan node untuk mendukung Vite build
+# Set the base image for subsequent instructions
 FROM php:8.2-fpm
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
-    git \
-    curl \
-    libpq-dev \
-    libzip-dev \
-    unzip \
+    build-essential \
+    libpng-dev \
+    libonig-dev \
+    libxml2-dev \
     zip \
-    nodejs \
-    npm
+    curl \
+    unzip \
+    git \
+    libzip-dev \
+    libfreetype6-dev \
+    libjpeg62-turbo-dev \
+    libpq-dev \
+    libpng-dev && \
+    docker-php-ext-install pdo_pgsql pgsql mbstring exif pcntl bcmath gd zip
 
-# Install PHP extensions
-RUN docker-php-ext-install pdo pdo_pgsql zip
+# Clear cache
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install Composer
-COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Set working directory
 WORKDIR /var/www
 
-# Copy seluruh kode ke container
-COPY . .
+# Remove default server definition
+RUN rm -rf /var/www/html
 
-# Install dependencies PHP (Composer)
-RUN composer install --prefer-dist --no-scripts --no-dev --optimize-autoloader
+# Copy existing application directory contents
+COPY . /var/www
 
-# Install dependencies Node.js (Vite)
-RUN npm install && npm run build
+# Copy existing application directory permissions
+COPY --chown=www-data:www-data . /var/www
 
-# Set permissions for Laravel storage and cache
-RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
+# Change current user to www
+USER www-data
 
-# Expose port untuk PHP-FPM
+# Expose port 9000 and start php-fpm server
 EXPOSE 9000
-
-# Jalankan PHP-FPM
 CMD ["php-fpm"]

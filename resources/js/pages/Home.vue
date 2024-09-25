@@ -1,5 +1,6 @@
 <template>
   <div class="bg-white py-6 sm:py-8 lg:py-12">
+    <h2 class="mb-2 text-center text-2xl font-bold text-gray-800 lg:mb-0 lg:text-3xl">Tambah Mutasi: </h2>
     <div class="grid grid-cols-3 gap-4 mx-3">
       <Select size="small" v-model="selectedUser" :options="users" filter optionLabel="label" placeholder="Pilih User" class="w-full">
           <template #value="slotProps">
@@ -52,9 +53,9 @@
       </FloatLabel>
       <Button @click="addMutation">Tambahkan Mutasi</Button>
     </div>
-    <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
+    <div class="mx-auto max-w-screen-2xl px-4 md:px-8 mt-6">
       <div class="mb-4 flex flex-col items-center md:mb-8 lg:flex-row lg:justify-between">
-        <h2 class="mb-2 text-center text-2xl font-bold text-gray-800 lg:mb-0 lg:text-3xl">Manage: </h2>
+        <h2 class="mb-2 text-center text-2xl font-bold text-gray-800 lg:mb-0 lg:text-3xl">Pergi Ke: </h2>
       </div>
       <div class="grid grid-cols-2 gap-4 rounded-lg md:grid-cols-3 lg:gap-6">
         <RouterLink to="/users" class="flex flex-col align-middle items-center justify-center rounded-lg bg-gray-100 p-4 text-gray-400">
@@ -116,11 +117,11 @@ function addMutation() {
 }
 
 onMounted(() => {
-  Api.get('/users')
+  localStorage.getItem('token') && Api.get('/users')
   .then((response) => {
     users.value = response.map((user) => ({ value: user.id, label: user.name }))
   })
-  Api.get('/items')
+  localStorage.getItem('token') && Api.get('/items')
   .then((response) => {
     items.value = response.map((item) => ({ value: item.id, label: item.name }))
   })

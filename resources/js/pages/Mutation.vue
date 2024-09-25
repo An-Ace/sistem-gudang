@@ -61,9 +61,9 @@
       <Column field="mutation_type" header="Tipe"></Column>
       <Column field="amount" header="Banyaknya"></Column>
       <Column field="created_at" header="Tanggal">
-        <!-- <template #body="slotProps">
+        <template #body="slotProps">
             {{ format(new Date(slotProps.data.created_at), 'dd/MM/yyyy HH:mm') }}
-        </template> -->
+        </template>
       </Column>
     </DataTable>
   </div>

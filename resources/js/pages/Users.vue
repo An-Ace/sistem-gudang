@@ -10,7 +10,7 @@
           {{ slotProps.data.mutations.length }}
         </template>
       </Column>
-      <Column header="Actions">
+      <Column header="Aksi">
         <template #body="slotProps">
           <RouterLink :to="`/users/${slotProps.data.id}`" class="p-button-text">
             <Button size="small" label="Edit" icon="pi pi-refresh" class="p-button-text" severity="info"/>
