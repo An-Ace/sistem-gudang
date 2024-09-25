@@ -1,7 +1,7 @@
 # SISTEM GUDANG
 ## Test From ID-GROW
 ### Description
-**This application is a test of ID-GROW, using the table models users, items, mutations.**
+**This application is a test of ID-GROW, using the table models users, items, mutations and using SOFT DELETE implementation.**
 #### Relational Database Models
 - **User -> Mutations (Has Many)**
 - **Item -> Mutations (Has Many)**
