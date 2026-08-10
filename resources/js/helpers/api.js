@@ -4,7 +4,7 @@ import { toast } from 'vue3-toastify'; // Adjust if using Vue-specific Toast lib
 
 // Create an Axios instance
 const api = axios.create({
-  baseURL: 'http://localhost:8000/api', // Replace with your API base URL
+  baseURL: '/api',
   headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
